@@ -13,7 +13,7 @@ import yaml
 import time
 
 STATE_COUNT_THRESHOLD = 3
-is_classifier_ready = False # set to False when we have a working classifier
+is_classifier_ready   = False # set to False when we have a working classifier
 
 class TLDetector(object):
     
@@ -25,14 +25,16 @@ class TLDetector(object):
         self.waypoints        = None
         self.camera_image     = None
         self.lights           = []
-
+        self.waypoints_2d     = None
+        self.waypoints_tree   = None
+        
         self.bridge           = CvBridge()
         self.light_classifier = TLClassifier()
         self.listener         = tf.TransformListener()
 
-        self.state = TrafficLight.UNKNOWN
-        self.last_state = TrafficLight.UNKNOWN
-        self.last_wp = -1
+        self.state       = TrafficLight.UNKNOWN
+        self.last_state  = TrafficLight.UNKNOWN
+        self.last_wp     = -1
         self.state_count = 0
 
         '''
@@ -64,6 +66,9 @@ class TLDetector(object):
 
     def waypoints_cb(self, waypoints):
         self.waypoints = waypoints
+        if not self.waypoints_2d:
+            self.waypoints_2d = [[waypoint.pose.pose.position] for waypoint in waypoints.waypoints]
+            self.waypoints_tree = KDTree(self.waypoints_2d)
 
     def traffic_cb(self, msg):
         self.lights = msg.lights
@@ -98,7 +103,7 @@ class TLDetector(object):
             self.upcoming_red_light_pub.publish(Int32(self.last_wp))
         self.state_count += 1
 
-    def get_closest_waypoint(self, pose):
+    def get_closest_waypoint(self, pose_x, pose_y):
         """Identifies the closest path waypoint to the given position
             https://en.wikipedia.org/wiki/Closest_pair_of_points_problem
         Args:
@@ -108,7 +113,7 @@ class TLDetector(object):
             int: index of the closest waypoint in self.waypoints
 
         """
-        closest_idx = self.waypoint_tree.query([x, y], 1)[1]
+        closest_idx = self.waypoint_tree.query([pose_x, pose_x], 1)[1]
         return closest_idx
 
     def get_light_state(self, light):
