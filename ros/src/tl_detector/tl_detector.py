@@ -13,7 +13,7 @@ import yaml
 import time
 
 STATE_COUNT_THRESHOLD = 3
-testing = True # set to False when we have a working classifier
+is_classifier_ready = False # set to False when we have a working classifier
 
 class TLDetector(object):
     
@@ -23,9 +23,6 @@ class TLDetector(object):
 
         self.pose             = None
         self.waypoints        = None
-        #self.base_waypoints   = None
-        #self.waypoints_2d     = None
-        #self.waypoint_tree    = None
         self.camera_image     = None
         self.lights           = []
 
@@ -126,7 +123,7 @@ class TLDetector(object):
         """
         
         # For testing, just return the light state
-        if testing:
+        if not is_classifier_ready:
             return light.state
 
         else:
