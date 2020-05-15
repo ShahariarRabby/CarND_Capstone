@@ -5,7 +5,7 @@ The members of team:
 
 | Name                          | GitHub account                                     | Udacity Email                 |
 |:------------------------------|:---------------------------------------------------|-------------------------------|
-| Mohamed Elhayany (team lead)  | [Melhaya](https://github.com/Melhaya)              | mohamed.osama211@gmail.com    |
+| Mohamed Elhayany (Team Lead)  | [Melhaya](https://github.com/Melhaya)              | mohamed.osama211@gmail.com    |
 | Dixon Liang                   | [dixonliang](https://github.com/dixonliang)        | liang.dixon@gmail.com         |
 | Shahariar Rabby               | [ShahariarRabby](https://github.com/ShahariarRabby)| shahariarrabby@gmail.com     |
 
@@ -26,32 +26,9 @@ the waypoints with the target velocity.
 
 There were four sections to the code that we implemented. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Waypoint Update Node
+DBW Node
+Traffic Light Detection Node
 
 
 ## Instructions for Build
