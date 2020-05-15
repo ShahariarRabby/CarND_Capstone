@@ -22,7 +22,7 @@ the waypoints with the target velocity.
 
 ![alt text][image1]
 
-## Overview
+### Overview
 
 
 
@@ -52,7 +52,7 @@ the waypoints with the target velocity.
 
 
 
-### Instructions for Build
+## Instructions for Build
 
 ---
 
