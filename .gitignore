@@ -1,6 +1,4 @@
-.idea/
-.idea/*
-
+.idea
 devel
 
 profile.tmp
@@ -133,4 +131,4 @@ venv.bak/
 dmypy.json
 
 # Pyre type checker
-.pyre/
+.pyre/.idea
