@@ -22,9 +22,9 @@ the waypoints with the target velocity.
 
 ![alt text][image1]
 
-### Overview
+### Code Implementation
 
-There were four sections to the code that we implemented. 
+There were three sections to the code that we implemented. 
 
 ### Waypoint Update Node
 
@@ -32,16 +32,39 @@ There were four sections to the code that we implemented.
 
 
 
-### DBW Node
 
 
 
 
+
+
+
+### DBW (Drive-By-Ware) Node
+
+This node is responsible for generating electronic control by publishing the appropriate steering, throttle, and brake commands for the car follwoing the car's waypoints. Primarily for the controller, we have implemented a generic PID. 
+
+The below code is part of /control in twist_contorller.py which is responsible for our throttle changes which controls how the car is at a stop or not by appliyng the brake. 
+
+
+```shell
+        if linear_vel == 0. and current_vel < 0.1:
+        	throttle = 0
+        	brake    = 700 #N*m to hold the car in place if we are stopped at a light. acceleration ~ 1m/s^2
+
+        elif throttle <.1 and vel_error < 0:
+        	throttle = 0
+        	decel = max(vel_error, self.decel_limit)
+        	brake = abs(decel)*(self.vehicle_mass + self.fuel_capacity * GAS_DENSITY)*self.wheel_radius # Torque N*m
+
+        return throttle, brake, steering
+```
 
 
 ### Traffic Light Detection Node
 
 This node consisted of a detector and a classifier. The main purpose of this node is to detect any traffic light and then classify the light to give direction for the car. 
+
+We implemented the detector by updating two functions /process_traffic_lights and /get_closest_waypoint. Effectively,  we use the vehcile's location to feed in the coordinates for the closest traffic light coordinates using these two functions. 
 
 For the classifier, we decided to use an OpenCV approach. Below is the main piece of code as we decided on a range of colors for red on the traffic light, if red pixels are detected after filtering, we classify the light as red which then directs the car to stop. On this implementation, anything that is not red, ends up being Unknown which allows the car to keep moving forward. 
 
@@ -60,6 +83,7 @@ For the classifier, we decided to use an OpenCV approach. Below is the main piec
         return TrafficLight.UNKNOWN
 ```
 
+At end of this node, we publish the index for the waypoint for the nearest upcoming red light stop to /traffic_waypoint. 
 
 ## Instructions for Build
 
