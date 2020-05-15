@@ -7,7 +7,7 @@ The members of team **To Be Determined**:
 |:------------------------------|:---------------------------------------------------|-------------------------------|
 | Mohamed Elhayany (team lead)  | [Melhaya](https://github.com/Melhaya)              | mohamed.osama211@gmail.com    |
 | Dixon Liang                   | [dixonliang](https://github.com/dixonliang)        | liang.dixon@gmail.com         |
-| Shahariar Rabby               | [ShahariarRabby](https://github.com/ShahariarRabby)| shahariarrabby2@gmail.com     |
+| Shahariar Rabby               | [ShahariarRabby](https://github.com/ShahariarRabby)| shahariarrabby@gmail.com     |
 
 
 [image1]: ./imgs/final-project-ros-graph-v2.png "Carla's System Architecture"
