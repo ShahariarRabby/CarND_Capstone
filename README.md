@@ -14,6 +14,19 @@ The members of team **To Be Determined**:
 
 Please use **one** of the two installation options, either native **or** docker installation.
 
+[image1]: ./final-project-ros-graph-v2.png "Carla's System Architecture"
+
+## System Architecture
+Carla's system can be broken down into three main parts:
+- The perception subsystem detects traffic lights and obstacles.
+- The planning subsystem (node waypoint updater) updates the waypoints and the
+associated target velocities.
+- The control subsystem actuates the throttle, steering, and brake to navigate
+the waypoints with the target velocity.
+
+![alt text][image1]
+
+---
 ### Native Installation
 
 * Be sure that your workstation is running Ubuntu 16.04 Xenial Xerus or Ubuntu 14.04 Trusty Tahir. [Ubuntu downloads can be found here](https://www.ubuntu.com/download/desktop).
