@@ -14,7 +14,7 @@ The members of team **To Be Determined**:
 
 Please use **one** of the two installation options, either native **or** docker installation.
 
-[image1]: ./img/final-project-ros-graph-v2.png "Carla's System Architecture"
+[image1]: ./imgs/final-project-ros-graph-v2.png "Carla's System Architecture"
 
 ## System Architecture
 Carla's system can be broken down into three main parts:
