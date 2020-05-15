@@ -2,7 +2,7 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 
 The main goal for this project was to program a car to drive through a controlled course which included traffic lights. The car was to be able to drive through the track, while stopping at the appropriate lights. We were able to test the code through a simulator as seen below. 
 
-<img src="./sim.JPG" alt="alt text" width=400 height=400>
+<img src="./sim.JPG" alt="alt text" width=600 height=400>
 
 ## Team Members
 The members of team:
