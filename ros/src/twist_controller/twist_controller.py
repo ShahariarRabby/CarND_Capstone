@@ -41,7 +41,7 @@ class Controller(object):
         ts = 0.02 # sample time
         self.vel_lpf = LowPassFilter(tau,ts)
 
-    def control(self, current_vel, dbw_enabled, linear_vel, angular_vel):
+    def control(self, current_vel, dbw_enabled, linear_vel, angular_vel, cte):
     	# Return throttle, brake, steer
 
         # Reset controller so that the integral term does not accumulate.
@@ -63,8 +63,8 @@ class Controller(object):
 
         # Calculate the additional steering control due to CTE Error and add it to the base.
         steering_base = self.yaw_controller.get_steering(linear_vel, angular_vel, current_vel)
-        #steering_cte  = self.cte_controller.step(cte, sample_time)
-        steering_total= steering_base # + steering_cte
+        steering_cte  = self.cte_controller.step(cte, sample_time)
+        steering_total= steering_base + steering_cte
         steering = max(min(self.max_steer_angle, steering_total), -self.max_steer_angle)
         
         brake = 0.
