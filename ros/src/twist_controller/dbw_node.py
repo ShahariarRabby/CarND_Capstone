@@ -31,6 +31,7 @@ that we have created in the `__init__` function.
 
 '''
 
+
 class DBWNode(object):
     def __init__(self):
         rospy.init_node('dbw_node')
@@ -56,21 +57,21 @@ class DBWNode(object):
         # TODO: Create `Controller` object
         # implemented based on "DBW Walkthrough"
         self.controller = Controller(vehicle_mass=vehicle_mass,
-                                    fuel_capacity=fuel_capacity,
-                                    brake_deadband=brake_deadband,
-                                    decel_limit=decel_limit,
-                                    accel_limit=accel_limit,
-                                    wheel_radius=wheel_radius,
-                                    wheel_base=wheel_base,
-                                    steer_ratio=steer_ratio,
-                                    max_lat_accel=max_lat_accel,
-                                    max_steer_angle=max_steer_angle)
-                                    
+                                     fuel_capacity=fuel_capacity,
+                                     brake_deadband=brake_deadband,
+                                     decel_limit=decel_limit,
+                                     accel_limit=accel_limit,
+                                     wheel_radius=wheel_radius,
+                                     wheel_base=wheel_base,
+                                     steer_ratio=steer_ratio,
+                                     max_lat_accel=max_lat_accel,
+                                     max_steer_angle=max_steer_angle)
+
         # TODO: Subscribe to all the topics you need to
         # implemented based on "DBW Walkthrough"
         rospy.Subscriber('/vehicle/dbw_enabled', Bool, self.dbw_enabled_cb)
-        rospy.Subscriber('/twist_cmd', TwistStamped, self.twist_cb, queue_size=1) # need , queue_size=1 ??
-        rospy.Subscriber('/current_velocity', TwistStamped, self.velocity_cb, queue_size=1) # need , queue_size=1 ??
+        rospy.Subscriber('/twist_cmd', TwistStamped, self.twist_cb, queue_size=1)  # need , queue_size=1 ??
+        rospy.Subscriber('/current_velocity', TwistStamped, self.velocity_cb, queue_size=1)  # need , queue_size=1 ??
 
         self.current_vel = None
         self.curr_ang_vel = None
@@ -78,20 +79,20 @@ class DBWNode(object):
         self.linear_vel = None
         self.angular_vel = None
         self.throttle = self.steering = self.brake = 0
-        
+
         self.loop()
 
     def loop(self):
-        rate = rospy.Rate(50) # 50Hz
+        rate = rospy.Rate(50)  # 50Hz
         while not rospy.is_shutdown():
             # TODO: Get predicted throttle, brake, and steering using `twist_controller`
             # You should only publish the control commands if dbw is enabled
             # implemented based on "DBW Walkthrough"
             if not None in (self.current_vel, self.linear_vel, self.angular_vel):
                 self.throttle, self.brake, self.steering = self.controller.control(self.current_vel,
-                                                                                  self.dbw_enabled,
-                                                                                  self.linear_vel,
-                                                                                  self.angular_vel)
+                                                                                   self.dbw_enabled,
+                                                                                   self.linear_vel,
+                                                                                   self.angular_vel)
                 if self.dbw_enabled:
                     self.publish(self.throttle, self.brake, self.steering)
             rate.sleep()
@@ -101,8 +102,8 @@ class DBWNode(object):
 
     def twist_cb(self, msg):
         self.linear_vel = msg.twist.linear.x
-        self.angular_vel =  msg.twist.angular.z
-        #rospy.logwarn("twist_cb: {0}".format(msg))
+        self.angular_vel = msg.twist.angular.z
+        # rospy.logwarn("twist_cb: {0}".format(msg))
 
     def velocity_cb(self, msg):
         self.current_vel = msg.twist.linear.x
@@ -124,6 +125,7 @@ class DBWNode(object):
         bcmd.pedal_cmd_type = BrakeCmd.CMD_TORQUE
         bcmd.pedal_cmd = brake
         self.brake_pub.publish(bcmd)
+
 
 if __name__ == '__main__':
     DBWNode()
