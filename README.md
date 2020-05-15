@@ -43,7 +43,7 @@ There were four sections to the code that we implemented.
 
 This node consisted of a detector and a classifier. The main purpose of this node is to detect any traffic light and then classify the light to give direction for the car. For this, we decided to use an OpenCV approach. 
 
-```bash
+```shell
         # Threshold the HSV image, keep only the red pixels
         lower_red_hue_range = cv2.inRange(hsv_image, (0, 100, 100), (10, 255, 255))
         upper_red_hue_range = cv2.inRange(hsv_image, (160, 100, 100), (179, 255, 255))
@@ -53,7 +53,10 @@ This node consisted of a detector and a classifier. The main purpose of this nod
 
         if num_of_red_pixels >= 200:
             return TrafficLight.RED
-'''
+            
+        return TrafficLight.UNKNOWN
+```
+
 
 
 ## Instructions for Build
