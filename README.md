@@ -32,14 +32,30 @@ There were three sections to the code that we implemented.
 
 ### Waypoint Update Node
 
-The primarily goal for the waypoint was to
+The primarily purpose of the waypoint node is to provide waypoints for the car to travel through with the correct target velocity. /base_waypoints provides all of the waypoints on the track. /current_pose provides the current locaization of the vechile in the simulator. /final_waypoints provides a subset of the /base_waypoints after taking into consideration the new target velocities given by the traffic sign classifier (see more below). In these waypoints, the car will know when to anticipate slowing down. Below is part of the code that actually finds the closest waypoint: 
 
+```shell
+    def get_closest_waypoint_idx(self):
+        x = self.pose.pose.position.x
+        y = self.pose.pose.position.y
+        closest_idx = self.waypoints_tree.query([x, y],1)[1]
 
+        #check if closest is ahead or behind vehicle
+        closest_coord = self.waypoints_2d[closest_idx]
+        prev_coord    = self.waypoints_2d[closest_idx-1]
 
+        # Equation for hyperplane through closest_coords
+        cl_vect = np.array(closest_coord)
+        prev_vect = np.array(prev_coord)
+        pos_vect = np.array([x, y])
 
+        val = np.dot(cl_vect-prev_vect, pos_vect-cl_vect)
 
+        if val>0:
+            closest_idx = (closest_idx + 1) % len(self.waypoints_2d)
 
-
+        return closest_idx
+```
 
 
 
