@@ -41,15 +41,19 @@ There were four sections to the code that we implemented.
 
 ### Traffic Light Detection Node
 
-This node consisted of a detector and a classifier. The main purpose of this node is to detect any traffic light and then classify  
+This node consisted of a detector and a classifier. The main purpose of this node is to detect any traffic light and then classify the light to give direction for the car. For this, we decided to use an OpenCV approach. 
 
-* /base_waypoints provides the complete list of waypoints for the course.
-* /current_pose can be used to determine the vehicle's location.
-* /image_color which provides an image stream from the car's camera. These images are used to determine the color of upcoming traffic lights.
-* /vehicle/traffic_lights provides the (x, y, z) coordinates of all traffic lights.
+```bash
+        # Threshold the HSV image, keep only the red pixels
+        lower_red_hue_range = cv2.inRange(hsv_image, (0, 100, 100), (10, 255, 255))
+        upper_red_hue_range = cv2.inRange(hsv_image, (160, 100, 100), (179, 255, 255))
+        mask = cv2.bitwise_or(lower_red_hue_range, upper_red_hue_range)
 
+        num_of_red_pixels = cv2.countNonZero(mask)
 
-
+        if num_of_red_pixels >= 200:
+            return TrafficLight.RED
+'''
 
 
 ## Instructions for Build
