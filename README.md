@@ -8,11 +8,7 @@ The members of team **To Be Determined**:
 | Mohamed Elhayany (team lead)  | [Melhaya](https://github.com/Melhaya)              | mohamed.osama211@gmail.com    |
 | Dixon Liang                   | [dixonliang](https://github.com/dixonliang)        | liang.dixon@gmail.com         |
 | Shahariar Rabby               | [ShahariarRabby](https://github.com/ShahariarRabby)| shahariarrabby2@gmail.com     |
-|                               |                                                    |                               |
-|                               |                                                    |                               |
 
-
-Please use **one** of the two installation options, either native **or** docker installation.
 
 [image1]: ./imgs/final-project-ros-graph-v2.png "Carla's System Architecture"
 
@@ -27,6 +23,9 @@ the waypoints with the target velocity.
 ![alt text][image1]
 
 ---
+
+Please use **one** of the two installation options, either native **or** docker installation.
+
 ### Native Installation
 
 * Be sure that your workstation is running Ubuntu 16.04 Xenial Xerus or Ubuntu 14.04 Trusty Tahir. [Ubuntu downloads can be found here](https://www.ubuntu.com/download/desktop).
