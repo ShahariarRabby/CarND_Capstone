@@ -39,7 +39,7 @@ There were three sections to the code that we implemented.
 
 
 
-### DBW (Drive-By-Ware) Node
+### DBW (Drive-By-Wire) Node
 
 This node is responsible for generating electronic control by publishing the appropriate steering, throttle, and brake commands for the car follwoing the car's waypoints. Primarily for the controller, we have implemented a generic PID. 
 
