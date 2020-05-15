@@ -26,9 +26,9 @@ the waypoints with the target velocity.
 
 There were four sections to the code that we implemented. 
 
-Waypoint Update Node
-DBW Node
-Traffic Light Detection Node
+-Waypoint Update Node
+-DBW Node
+-Traffic Light Detection Node
 
 
 ## Instructions for Build
