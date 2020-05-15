@@ -43,10 +43,12 @@ There were four sections to the code that we implemented.
 
 This node consisted of a detector and a classifier. The main purpose of this node is to detect any traffic light and then classify  
 
-/base_waypoints provides the complete list of waypoints for the course.
-/current_pose can be used to determine the vehicle's location.
-/image_color which provides an image stream from the car's camera. These images are used to determine the color of upcoming traffic lights.
-/vehicle/traffic_lights provides the (x, y, z) coordinates of all traffic lights.
+* /base_waypoints provides the complete list of waypoints for the course.
+* /current_pose can be used to determine the vehicle's location.
+* /image_color which provides an image stream from the car's camera. These images are used to determine the color of upcoming traffic lights.
+* /vehicle/traffic_lights provides the (x, y, z) coordinates of all traffic lights.
+
+
 
 
 
