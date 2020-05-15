@@ -21,7 +21,7 @@ current status in `/vehicle/traffic_lights` message. You can use this message to
 as well as to verify your TL classifier.
 '''
 
-LOOKAHEAD_WPS = 50 # Number of waypoints we will publish. You can change this number
+LOOKAHEAD_WPS = 100 # Number of waypoints we will publish. You can change this number
 MAX_DECEL     = .5
 class WaypointUpdater(object):
     def __init__(self):
@@ -54,7 +54,7 @@ class WaypointUpdater(object):
         self.loop()
 
     def loop(self): # To target a frequency of 50 Hz
-        rate = rospy.Rate(30) #50
+        rate = rospy.Rate(10) #50
         while not rospy.is_shutdown():
             if self.pose and self.base_lane:
                 self.publish_waypoints()
