@@ -24,6 +24,8 @@ the waypoints with the target velocity.
 
 ### Overview
 
+There were four sections to the code that we implemented. 
+
 
 
 
@@ -53,8 +55,6 @@ the waypoints with the target velocity.
 
 
 ## Instructions for Build
-
----
 
 Please use **one** of the two installation options, either native **or** docker installation.
 
