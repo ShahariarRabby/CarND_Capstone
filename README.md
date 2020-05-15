@@ -41,7 +41,10 @@ There were four sections to the code that we implemented.
 
 ### Traffic Light Detection Node
 
-This node consisted of a detector and a classifier. The main purpose of this node is to detect any traffic light and then classify the light to give direction for the car. For this, we decided to use an OpenCV approach. 
+This node consisted of a detector and a classifier. The main purpose of this node is to detect any traffic light and then classify the light to give direction for the car. 
+
+For the classifier, we decided to use an OpenCV approach. Below is the main piece of code as we decided on a range of colors for red on the traffic light, if red pixels are detected after filtering, we classify the light as red which then directs the car to stop. On this implementation, anything that is not red, ends up being Unknown which allows the car to keep moving forward. 
+
 
 ```shell
         # Threshold the HSV image, keep only the red pixels
@@ -56,7 +59,6 @@ This node consisted of a detector and a classifier. The main purpose of this nod
             
         return TrafficLight.UNKNOWN
 ```
-
 
 
 ## Instructions for Build
