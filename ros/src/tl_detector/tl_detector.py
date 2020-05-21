@@ -13,7 +13,7 @@ import yaml
 import time
 
 STATE_COUNT_THRESHOLD = 2
-is_classifier_ready   = False # set to False when we have a working classifier
+is_classifier_ready   = True # set to True when we have a working classifier
 
 class TLDetector(object):
     
